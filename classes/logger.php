@@ -1,6 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;
 /**
- * Handles custom error logging for Ninja Forms and Ninja Forms Extensions.
+ * Handles custom logging for Ninja Forms and Ninja Forms Extensions.
+ *
+ * PSR-3 and WordPress Compliant where applicable.
  *
  * @package     Ninja Forms
  * @subpackage  Classes/Errors
@@ -9,7 +11,7 @@
  * @since       2.9.8
  */
 
-class NF_Error_Logger {
+class NF_Logger {
 
     /**
      * System is unusable.
