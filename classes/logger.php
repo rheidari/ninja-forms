@@ -14,14 +14,26 @@
 class NF_Logger {
 
     /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     * @return null
+     */
+    public static function log($level, $message, array $context = array()) {
+        // This line currently empty
+    }
+
+    /**
      * System is unusable.
      *
      * @param string $message
      * @param array $context
      * @return null
      */
-    public function emergency($message, array $context = array()) {
-        $this->log( 'emergency', $message, $context );
+    public static function emergency($message, array $context = array()) {
+        self::log( 'emergency', $message, $context );
     }
 
     /**
@@ -34,8 +46,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function alert($message, array $context = array()) {
-        $this->log( 'alert', $message, $context );
+    public static function alert($message, array $context = array()) {
+        self::log( 'alert', $message, $context );
     }
 
     /**
@@ -47,8 +59,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function critical($message, array $context = array()) {
-        $this->log( 'error', $message, $context );
+    public static function critical($message, array $context = array()) {
+        self::log( 'error', $message, $context );
     }
 
     /**
@@ -59,8 +71,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function error($message, array $context = array()) {
-        $this->log( 'error', $message, $context );
+    public static function error($message, array $context = array()) {
+        self::log( 'error', $message, $context );
     }
 
     /**
@@ -73,8 +85,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function warning($message, array $context = array()) {
-        $this->log( 'warning', $message, $context );
+    public static function warning($message, array $context = array()) {
+        self::log( 'warning', $message, $context );
     }
 
     /**
@@ -84,8 +96,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function notice($message, array $context = array()) {
-        $this->log( 'notice', $message, $context );
+    public static function notice($message, array $context = array()) {
+        self::log( 'notice', $message, $context );
     }
 
     /**
@@ -97,8 +109,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function info($message, array $context = array()) {
-        $this->log( 'info', $message, $context );
+    public static function info($message, array $context = array()) {
+        self::log( 'info', $message, $context );
     }
 
     /**
@@ -108,20 +120,8 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function debug($message, array $context = array()) {
-        $this->log( 'debug', $message, $context );
-    }
-
-    /**
-     * Logs with an arbitrary level.
-     *
-     * @param mixed $level
-     * @param string $message
-     * @param array $context
-     * @return null
-     */
-    public function log($level, $message, array $context = array()) {
-
+    public static function debug($message, array $context = array()) {
+        self::log( 'debug', $message, $context );
     }
 
 }
