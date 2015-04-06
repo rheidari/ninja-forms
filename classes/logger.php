@@ -47,7 +47,9 @@ class NF_Logger {
      * @param array $context
      * @return null
      */
-    public function critical($message, array $context = array());
+    public function critical($message, array $context = array()) {
+        $this->log( 'error', $message, $context );
+    }
 
     /**
      * Runtime errors that do not require immediate action but should typically
