@@ -375,6 +375,8 @@ class Ninja_Forms {
 		require_once( NF_PLUGIN_DIR . 'classes/notifications-table.php' );
 		// Include our base notification type
 		require_once( NF_PLUGIN_DIR . 'classes/notification-base-type.php' );
+        // Include our logger class
+        require_once( NF_PLUGIN_DIR . 'classes/logger.php');
 
 		if ( is_admin () ) {
 			// Include our step processing stuff if we're in the admin.
