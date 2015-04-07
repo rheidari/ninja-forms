@@ -12,8 +12,6 @@
  * @since       2.9.8
  */
 
-//TODO Get x logs
-
 class NF_Logger {
 
     const OBJECT_TYPE = 'log';
@@ -29,12 +27,9 @@ class NF_Logger {
     public static function log($level, $message, array $context = array()) {
         $log_id = nf_insert_object( self::OBJECT_TYPE );
         nf_update_object_meta( $log_id, 'created_at', time() );
+        nf_update_object_meta( $log_id, 'level', $level );
         nf_update_object_meta( $log_id, 'message', $message );
-
-        foreach ( $context as $key => $value ) {
-            if ( is_array( $value ) ) $value = serialize( $value );
-            nf_update_object_meta( $log_id, $key, $value );
-        }
+        nf_update_object_meta( $log_id, 'context', maybe_serialize( $context ) );
     }
 
     /**
@@ -137,3 +132,48 @@ class NF_Logger {
     }
 
 }
+
+class NF_Log {
+
+    public $id;
+
+    public function __construct( $id ) {
+        $this->id = $id;
+    }
+
+    public function save() {
+        return true;
+    }
+
+    public function get_context() {
+        global $wpdb;
+
+        return '';
+    }
+
+    public static function get_logs( array $options = array() ) {
+        global $wpdb;
+
+        $logs = array();
+
+        $results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "nf_objects WHERE type = '" . NF_Logger::OBJECT_TYPE . "'", ARRAY_A);
+
+        foreach ( $results as $result ) {
+            $log = new NF_Log( $result['id'] );
+            $logs[$log->id] = $log;
+        }
+
+        return $logs;
+
+    }
+
+}
+
+/* DEBUG */
+
+$logs = NF_Log::get_logs();
+
+echo "<pre>";
+var_dump($logs);
+echo "</pre>";
+die();
