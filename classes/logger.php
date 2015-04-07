@@ -1,4 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Handles custom logging for Ninja Forms and Ninja Forms Extensions.
  *
@@ -11,7 +12,11 @@
  * @since       2.9.8
  */
 
+//TODO Get x logs
+
 class NF_Logger {
+
+    const OBJECT_TYPE = 'log';
 
     /**
      * Logs with an arbitrary level.
@@ -22,7 +27,14 @@ class NF_Logger {
      * @return null
      */
     public static function log($level, $message, array $context = array()) {
-        // This line currently empty
+        $log_id = nf_insert_object( self::OBJECT_TYPE );
+        nf_update_object_meta( $log_id, 'created_at', time() );
+        nf_update_object_meta( $log_id, 'message', $message );
+
+        foreach ( $context as $key => $value ) {
+            if ( is_array( $value ) ) $value = serialize( $value );
+            nf_update_object_meta( $log_id, $key, $value );
+        }
     }
 
     /**
