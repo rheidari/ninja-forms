@@ -62,6 +62,8 @@ jQuery(document).ready(function($) {
 		});
 	});
 
+	$( '.nf-fields-combobox' ).combobox();
+	
 	$( document ).on( 'click', '.nf-insert-field', function(e) {
 		e.preventDefault();
 		var field_id = $( this ).prev().prev( '.nf-fields-combobox' ).val();
@@ -76,8 +78,6 @@ jQuery(document).ready(function($) {
 		var shortcode = '[ninja_forms_all_fields]';	
 		window.parent.send_to_editor( shortcode );
 	});
-
-	$( '.nf-fields-combobox' ).combobox();
 
 	$( '.ui-combobox-input' ).focus( function(e) {
 		var selected = $( this ).parent().prev( '.nf-fields-combobox' ).val();
@@ -112,5 +112,6 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 		$( '#email_advanced' ).toggle();
 	});
+
 
 });
