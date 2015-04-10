@@ -30,23 +30,13 @@ class NF_Upgrades {
 
         $upgrades = get_option( NF_Upgrade::WP_OPTION, false );
 
-        $this->set_upgrades( $upgrades );
-
-        return $this->upgrades;
-    }
-
-    /**
-     * Set Upgrades
-     *
-     * @param $upgrades
-     */
-    function set_upgrades( $upgrades ) {
-
         foreach ( $upgrades as $upgrade => $properties ) {
             $this->upgrades[] = new NF_Upgrade( $properties );
         }
 
         usort( $this->upgrades, 'NF_Upgrade::compare' );
+
+        return $this->upgrades;
     }
 
     /**
