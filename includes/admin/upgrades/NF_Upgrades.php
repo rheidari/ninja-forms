@@ -6,12 +6,16 @@
 class NF_Upgrades {
 
     /**
+     * @const WP_OPTION
      *
+     * The name of the option in the wp_options table
      */
     const WP_OPTION = "nf_upgrades";
 
     /**
      * @var array
+     *
+     * An array of NF_Upgrade objects
      */
     public $upgrades = array();
 
