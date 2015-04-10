@@ -105,8 +105,6 @@ class NF_Upgrade {
      */
     public $timestamp;
 
-
-
     /**
      * @param array $properties
      */
@@ -118,23 +116,6 @@ class NF_Upgrade {
                 $this->$property = $value;
             }
         }
-    }
-
-    /**
-     * Compare
-     *
-     * Compare the priority of two upgrades
-     *
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    public static function compare($a, $b) {
-
-        if ($a->priority == $b->priority) {
-            return 0;
-        }
-        return ($a->priority < $b->priority) ? -1 : 1;
     }
 
     /**
@@ -160,6 +141,23 @@ class NF_Upgrade {
     public function reset() {
 
         $this->timestamp = null;
+    }
+
+    /**
+     * Compare
+     *
+     * Compare the priority of two upgrades
+     *
+     * @param $a
+     * @param $b
+     * @return int
+     */
+    public static function compare($a, $b) {
+
+        if ($a->priority == $b->priority) {
+            return 0;
+        }
+        return ($a->priority < $b->priority) ? -1 : 1;
     }
 
 } // END NF_Upgrade
