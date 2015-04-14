@@ -1,5 +1,58 @@
+// We don't want to use the default <% %> tags because of PHP servers using ASP-like tags.
+// Instead, we will use <# #> in our templates.
+_.templateSettings = {
+  evaluate    : /<#([\s\S]+?)#>/g,
+  interpolate : /<#=([\s\S]+?)#>/g
+};
+
 jQuery(document).ready(function($) {
 
+	// Backbone View for all our key field pairs
+	var KeyFieldPairsView = Backbone.View.extend( {
+		el: $( '#nf_key_field_pairs' ), // attaches `this.el` to an existing element.
+		
+		// Get our view up and running.
+		initialize: function() {
+			_.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
+			this.render();
+		},
+
+		render: function() {
+			var that = this;
+			_.each( nf_keyfieldpairs, function( pair, object_id ) {
+				var singleview = new KeyFieldPairView( { el: that.el } );
+				singleview.render( pair, object_id );
+			} );
+			
+		},
+
+		events: {
+			'click .add': 'test'
+		},
+
+		test: function( e ) {
+			e.preventDefault();
+			console.log( 'hi' );
+		}
+
+	} );
+
+	// Backbone View for our key field pair
+	var KeyFieldPairView = Backbone.View.extend( {
+		
+		// Get our view up and running.
+		initialize: function() {
+			_.bindAll(this, 'render'); // fixes loss of context for 'this' within methods
+		},
+
+		render: function( pair, object_id ) {
+			var tmp = _.template( $( '#tmpl-nf-key-field-pairs' ).html(), { pair: pair, object_id: object_id } );
+			$( this.el ).append( tmp );
+		}
+
+	} );
+
+	var keyFieldPairsView = new KeyFieldPairsView();
 
 	$( '#settings-type' ).change( function() {
 		var val = this.value;

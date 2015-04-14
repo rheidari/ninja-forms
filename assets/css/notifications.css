@@ -37,3 +37,39 @@
 #ninja_forms_admin .token .close:hover {
     color: #666;
 }
+
+.single-key-field {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0 5px 20px;
+}
+
+.nf-key-field-pair {
+    background: #fff;
+    overflow: hidden;
+}
+
+.nf-key-field-pairs-title{
+    background: #ddd;
+    padding: 10px;
+}
+
+.nf-key-field-pairs {
+    border: 1px solid #ddd;
+}
+
+.nf-key-field-pair-add div {
+    margin-top: 3px;
+}
+
+.nf-key-field-pair-delete {
+    text-decoration: none;
+    color: #333;
+}
+
+.nf-key-field-pair-delete div {
+    margin-top: 5px;
+}
+
+.nf-key-field-pair-delete:hover {
+    color: red;
+}

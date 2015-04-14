@@ -19,7 +19,7 @@ abstract class NF_Notification_Base_Type
 	 * @since 2.8
 	 */
 	function __construct() {
-
+		add_action( 'nf_enqueue_notifications_js', array ( $this, 'add_js' ) );
 	}
 
 	/**
@@ -54,6 +54,17 @@ abstract class NF_Notification_Base_Type
 	public function save_admin( $id = '', $data ) {
 		// This space left intentionally blank
 		return $data;
+	}
+
+	/**
+	 * Add custom JS
+	 *
+	 * @access public
+	 * @since 2.8
+	 * @return false
+	 */
+	public function add_js( $id = '' ) {
+		// This space left intentionally blank
 	}
 
 	/**
