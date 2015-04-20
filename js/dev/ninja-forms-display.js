@@ -181,9 +181,16 @@ jQuery(document).ready(function(jQuery) {
 	var countdown = {};
 	jQuery('.countdown-timer').each(function( index ) {
 
-		jQuery(this).attr('disabled', 'disabled').prev('input.no-js').remove();
-		id = jQuery(this).attr('id');
-		countdown.index = window.setInterval(function(){ninja_forms_countdown(id, index)},1000);
+        jQuery(this).attr('disabled', 'disabled').prev('input.no-js').remove();
+        id = jQuery(this).attr('id');
+
+        if ( jQuery('#mp_confirm_msg').length > 0 ) {
+            jQuery(this).data( 'countdown', 0);
+        }
+
+        countdown.index = window.setInterval(function () {
+            ninja_forms_countdown(id, index)
+        }, 1000);
 
 	});
 
