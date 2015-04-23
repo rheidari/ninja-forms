@@ -229,7 +229,13 @@ class NF_Log {
     public static function get_logs( array $options = array() ) {
         global $wpdb;
 
-        $results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "nf_objects WHERE type = '" . NF_Logger::OBJECT_TYPE . "'", ARRAY_A);
+        $query = "SELECT * FROM " . $wpdb->prefix . "nf_objects WHERE type = '" . NF_Logger::OBJECT_TYPE . "'";
+
+        if ( isset( $options['limit'] ) )  {
+            $query .= " LIMIT " . $options['limit'];
+        }
+
+        $results = $wpdb->get_results( $query, ARRAY_A);
 
         foreach ( $results as $result ) {
             $log = new NF_Log( $result['id'] );
