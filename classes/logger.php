@@ -137,33 +137,103 @@ class NF_Log {
 
     public $id;
 
+    private $meta;
+
+    /**
+     * Static list of logs
+     *
+     * @var
+     */
+    static $logs;
+
+
+    /**
+     * Constructor
+     *
+     * Create a new NF_Log object
+     *
+     * @param $id
+     */
     public function __construct( $id ) {
         $this->id = $id;
     }
 
-    public function save() {
-        return true;
+    /**
+     * Created At
+     *
+     * @param string $format optional
+     * @return string
+     */
+    public function created_at( $format = '' ) {
+
+        if ( isset( $format ) ) {
+            return (string) date( $format, $this->meta['created_at'] );
+        }
+
+        return (string) $this->meta['created_at'];
     }
 
-    public function get_context() {
-        global $wpdb;
-
-        return '';
+    /**
+     * Level
+     *
+     * @return string
+     */
+    public function level() {
+        return (string) $this->meta['level'];
     }
 
+    /**
+     * Message
+     *
+     * @return string
+     */
+    public function message() {
+        return (string) $this->meta['message'];
+    }
+
+    /**
+     * Context
+     *
+     * @return array
+     */
+    public function context() {
+        return (array) $this->meta['context'];
+    }
+
+    /**
+     * Export
+     *
+     * Returns a serialized object
+     *
+     * @return string serialized
+     */
+    public function export() {
+        return serialize( $this );
+    }
+
+
+    /**
+     * Get Logs
+     *
+     * Static getter for getting logs in bulk
+     *
+     * @param array $options
+     * @return array
+     */
     public static function get_logs( array $options = array() ) {
         global $wpdb;
-
-        $logs = array();
 
         $results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "nf_objects WHERE type = '" . NF_Logger::OBJECT_TYPE . "'", ARRAY_A);
 
         foreach ( $results as $result ) {
             $log = new NF_Log( $result['id'] );
-            $logs[$log->id] = $log;
+
+            $log->meta = nf_get_object_meta( $log->id );
+
+            self::$logs[ $log->id ] = $log;
         }
 
-        return $logs;
+        return (array) self::$logs;
 
     }
 
