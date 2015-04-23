@@ -168,12 +168,3 @@ class NF_Log {
     }
 
 }
-
-/* DEBUG */
-
-$logs = NF_Log::get_logs();
-
-echo "<pre>";
-var_dump($logs);
-echo "</pre>";
-die();
