@@ -200,6 +200,12 @@ class NF_Log {
         return (array) $this->meta['context'];
     }
 
+    public function display() {
+        echo "<pre>";
+        var_dump( $this );
+        echo "</pre>";
+    }
+
     /**
      * Export
      *
