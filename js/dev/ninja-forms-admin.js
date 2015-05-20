@@ -182,7 +182,7 @@ jQuery(document).ready(function($) {
 	});
 
 	//Disble the enter key so that it doesn't submit our form if pressed.
-	$(document).on( 'keydown', 'form input', function( event ){
+	$( '.ninja-forms-cont' ).on( 'keydown', 'form input', function( event ){
 		if(event.keyCode == 13) {
 			var type = $(this).attr("type");
 			if( type != "textarea" ){
