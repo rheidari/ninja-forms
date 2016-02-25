@@ -18,7 +18,7 @@ function nf_admin_notices( $notices ) {
         'msg' => sprintf( __( 'A major update is coming to Ninja Forms. %sLearn more about new features, backwards compatibility, and more Frequently Asked Questions.%s', 'ninja-forms' ), '<a target="_blank" href="https://ninjaforms.com/three/?utm_medium=plugin&utm_source=admin-notice&utm_campaign=Ninja+Forms+THREE&utm_content=Learn+More">', '</a>' ),
         'link' => '',
         'int' => 0,
-        'blacklist' => array( 'ninja-forms' ),
+        'blacklist' => array( 'ninja-forms', 'ninja-forms-three' ),
     );
 
     $one_week_support = add_query_arg( array( 'nf_admin_notice_ignore' => 'one_week_support' ) );
@@ -28,7 +28,8 @@ function nf_admin_notices( $notices ) {
         'link' => '<li><span class="dashicons dashicons-media-text"></span><a target="_blank" href="http://docs.ninjaforms.com/?utm_medium=plugin&utm_source=admin-notice&utm_campaign=Ninja+Forms+Upsell&utm_content=Ninja+Forms+Docs">' . __( 'Check out our documentation', 'ninja-forms' ) . '</a></li>
                     <li><span class="dashicons dashicons-sos"></span><a target="_blank" href="https://ninjaforms.com/contact/?utm_medium=plugin&utm_source=admin-notice&utm_campaign=Ninja+Forms+Upsell&utm_content=Ninja+Forms+Support">' . __( 'Get Some Help' ,'ninja-forms' ) . '</a></li>
                     <li><span class="dashicons dashicons-dismiss"></span><a href="' . $one_week_support . '">' . __( 'Dismiss' ,'ninja-forms' ) . '</a></li>',
-        'int' => 7
+        'int' => 7,
+        'blacklist' => array( 'ninja-forms-three' ),
     );
 
 //    $two_week_review_ignore = add_query_arg( array( 'nf_admin_notice_ignore' => 'two_week_review' ) );
