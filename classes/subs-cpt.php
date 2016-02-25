@@ -384,7 +384,7 @@ class NF_Subs_CPT {
 				echo apply_filters( 'nf_sub_table_seq_num', Ninja_Forms()->sub( $sub_id )->get_seq_num(), $sub_id, $column );
 				echo '<div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>';
 				if ( !isset ( $_GET['post_status'] ) || $_GET['post_status'] == 'all' ) {
-					echo '<div class="row-actions custom-row-actions">';
+					echo '<div class="row-actions">';
 					do_action( 'nf_sub_table_before_row_actions', $sub_id, $column );
 					echo '<span class="edit"><a href="post.php?post=' . $sub_id . '&action=edit&ref=' . urlencode( esc_url(  add_query_arg( array() ) ) ) . '" title="' . __( 'Edit this item', 'ninja-forms' ) . '">' . __( 'Edit', 'ninja-forms' ) . '</a> | </span> 
 						<span class="edit"><a href="' . esc_url( add_query_arg( array( 'export_single' => $sub_id ) ) ) . '" title="' . __( 'Export this item', 'ninja-forms' ) . '">' . __( 'Export', 'ninja-forms' ) . '</a> | </span>';
@@ -397,7 +397,7 @@ class NF_Subs_CPT {
 					do_action( 'nf_sub_table_after_row_actions', $sub_id, $column );
 					echo '</div>';
 				} else {
-					echo '<div class="row-actions custom-row-actions">';
+					echo '<div class="row-actions">';
 					do_action( 'nf_sub_table_before_row_actions_trash', $sub_id, $column );
 					echo '<span class="untrash"><a title="' . esc_attr( __( 'Restore this item from the Trash' ) ) . '" href="' . wp_nonce_url( sprintf( get_edit_post_link( $sub_id ) . '&amp;action=untrash', $sub_id ) , 'untrash-post_' . $sub_id ) . '">' . __( 'Restore' ) . '</a> | </span> 
 					<span class="delete"><a class="submitdelete" title="' . esc_attr( __( 'Delete this item permanently' ) ) . '" href="' . get_delete_post_link( $sub_id, '', true ) . '">' . __( 'Delete Permanently' ) . '</a></span>';
@@ -636,23 +636,24 @@ class NF_Subs_CPT {
 	function post_updated_messages( $messages ) {
 
 		global $post, $post_ID;
-		$post_type = get_post_type( $post_ID );
+		$post_type = 'nf_sub';
 
 		$obj = get_post_type_object( $post_type );
 		$singular = $obj->labels->singular_name;
 
 		$messages[$post_type] = array(
-			0 => '', // Unused. Messages start at index 1.
-			1 => $singular . ' ' . __( 'updated', 'ninja-forms' ) . '.',
-			2 => 'Custom field updated.',
-			3 => 'Custom field deleted.',
-			4 => $singular.' updated.',
-			5 => isset($_GET['revision']) ? sprintf( $singular.' restored to revision from %s', wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6 => sprintf( $singular.' published. <a href="%s">View '.strtolower($singular).'</a>', esc_url( get_permalink($post_ID) ) ),
-			7 => 'Page saved.',
-			8 => sprintf( $singular.' submitted. <a target="_blank" href="%s">Preview '.strtolower($singular).'</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
-			9 => sprintf( $singular.' scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview '.strtolower($singular).'</a>', date_i18n( 'M j, Y @ G:i', strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
-			10 => sprintf( $singular.' draft updated. <a target="_blank" href="%s">Preview '.strtolower($singular).'</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+			0 => 	'', // Unused. Messages start at index 1.
+	 		1 => 	sprintf( __( '%s updated.', 'ninja-forms' ), $singular ),
+	 		2 => 	__( 'Custom field updated.' ),
+	 		3 => 	__( 'Custom field deleted.' ),
+	 		4 => 	sprintf( __( '%s updated.', 'ninja-forms' ), $singular ),
+			/* translators: %s: date and time of the revision */
+	 		5 => 	isset($_GET['revision']) ? sprintf( __( '%1$s restored to revision from %2$s.' ), $singular, wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+	 		6 => 	sprintf( __( '%s published.', 'ninja-forms' ), $singular ),
+	 		7 => 	sprintf( __( '%s saved.', 'ninja-forms' ), $singular ),
+	 		8 => 	sprintf( __( '%1$s submitted. <a href="%2$s" target="_blank">Preview %3$s</a>', 'ninja-forms' ), $singular, esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ), $singular ),
+	 		9 => 	sprintf( __( '%1$s scheduled for: <strong>%2$s</strong>. <a href="%3$s" target="_blank">Preview %4$s</a>', 'ninja-forms' ), $singular, date_i18n( get_option( 'data_format' ) . ' ' . get_option( 'time_format' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID ) ), $singular ),
+			10 => 	sprintf( __( '%1$s draft updated. <a href="%2$s" target="_blank">Preview %3$s</a>', 'ninja-forms' ), $singular, esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ), $singular ),
 		);
 
 		return $messages;
