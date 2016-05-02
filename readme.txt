@@ -97,14 +97,19 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.9.37 (17 March 2016) =
+= 2.9.37.1 (2 May 2016) =
 
-*Bugs:*
+*Security:*
 
-* Fixing a bug with session caching.
-* Fixing a problem with merge tag display in FireFox browsers.
+* Fixed a major security issue. Please update as soon as possible. 
 
 == Changelog ==
+
+= 2.9.37.1 (2 May 2016) =
+
+*Security:*
+
+* Fixed a major security issue. Please update as soon as possible. 
 
 = 2.9.37 (17 March 2016) =
 
