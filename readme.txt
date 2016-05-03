@@ -97,19 +97,19 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.9.36.1 (2 May 2016) =
+= 2.9.36.1 (03 May 2016) =
 
 *Security:*
 
-* Fixed a major security issue. Please update as soon as possible. 
+* Fixed a major security issue. Please update as soon as possible.
 
 == Changelog ==
 
-= 2.9.36.1 (2 May 2016) =
+= 2.9.36.1 (03 May 2016) =
 
 *Security:*
 
-* Fixed a major security issue. Please update as soon as possible. 
+* Fixed a major security issue. Please update as soon as possible.
 
 = 2.9.36 (14 March 2016) =
 
