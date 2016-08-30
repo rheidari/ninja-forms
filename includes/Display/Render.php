@@ -60,6 +60,10 @@ final class NF_Display_Render
             }
         }
 
+        $currency = $form->get_setting( 'currency', Ninja_Forms()->get_setting( 'currency' ) );
+        $currency_symbol = Ninja_Forms::config( 'CurrencySymbol' );
+        $form->update_setting( 'currency_symbol', ( isset( $currency_symbol[ $currency ] ) ) ? $currency_symbol[ $currency ] : '' );
+
         $before_form = apply_filters( 'ninja_forms_display_before_form', '', $form_id );
         $form->update_setting( 'beforeForm', $before_form );
 
@@ -226,6 +230,10 @@ final class NF_Display_Render
         }
 
         $form[ 'settings' ][ 'is_preview' ] = TRUE;
+
+        $currency = ( isset( $form[ 'settings' ][ 'currency' ] ) ) ? $form[ 'settings' ][ 'currency' ] : Ninja_Forms()->get_setting( 'currency' ) ;
+        $currency_symbol = Ninja_Forms::config( 'CurrencySymbol' );
+        $form[ 'settings' ][ 'currency_symbol' ] = ( isset( $currency_symbol[ $currency ] ) ) ? $currency_symbol[ $currency ] : '';
 
         $before_form = apply_filters( 'ninja_forms_display_before_form', '', $form_id, TRUE );
         $form[ 'settings' ][ 'beforeForm'] = $before_form;
