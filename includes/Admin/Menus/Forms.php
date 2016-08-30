@@ -156,7 +156,8 @@ final class NF_Admin_Menus_Forms extends NF_Abstracts_Menu
             'previewurl'        => site_url() . '/?nf_preview_form=',
             'wp_locale'         => $wp_locale->number_format,
             'editFormText'      => __( 'Edit Form', 'ninja-forms' ),
-            'mobile'            => ( wp_is_mobile() ) ? 1: 0
+            'mobile'            => ( wp_is_mobile() ) ? 1: 0,
+            'currency_symbol'   => Ninja_Forms()->get_setting( 'currency_symbol' )
         ));
 
         do_action( 'nf_admin_enqueue_scripts' );

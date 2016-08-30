@@ -128,7 +128,7 @@ define( ['views/app/drawer/mergeTagsContent', 'views/app/drawer/settingError'], 
 						break;
 					case 'currency':
 						input.autoNumeric({
-							aSign: '$', // TODO: Use form setting
+							aSign: nfAdmin.currency_symbol,
 							aSep: thousandsSeparator,
 							aDec: decimalPoint
 						});
