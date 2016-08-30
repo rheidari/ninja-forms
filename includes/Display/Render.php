@@ -157,7 +157,6 @@ final class NF_Display_Render
 
                 // TODO: Find a better way to do this.
                 if ('shipping' == $settings['type']) {
-                    // TODO: Does the currency marker need to stripped here?
                     $settings['shipping_cost'] = str_replace( array( '$', '£', '€' ), '', $settings['shipping_cost']);
                     $settings['shipping_cost'] = str_replace( Ninja_Forms()->get_setting( 'currency_symbol' ), '', $settings['shipping_cost']);
                     $settings['shipping_cost'] = number_format($settings['shipping_cost'], 2);

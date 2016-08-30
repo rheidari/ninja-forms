@@ -113,10 +113,11 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
     public function merge_tag_value( $value, $field )
     {
-        $product_price = ( isset( $field[ 'product_price' ] ) ) ? str_replace( '$', '', $field[ 'product_price' ] ) : 0;
+        $currency_symbol = Ninja_Forms()->get_setting( 'currency_symbol' );
+        $product_price = ( isset( $field[ 'product_price' ] ) ) ? str_replace( $currency_symbol, '', $field[ 'product_price' ] ) : 0;
         $product_quantity = ( isset( $field[ 'product_use_quantity' ] ) && 1 == $field[ 'product_use_quantity' ] ) ? $value : 1;
 
         // TODO: Extract a higher level currency formatting based on settings.
-        return '$' . number_format( $product_price * $product_quantity, 2 );
+        return $currency_symbol . number_format( $product_price * $product_quantity, 2 );
     }
 }
