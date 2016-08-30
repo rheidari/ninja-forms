@@ -6,7 +6,7 @@
 
 <script id="nf-tmpl-product-single" type="text/template">
     <span class="nf-product-price-label"><% nfi18n.fieldsProductsPrice %></span>
-    <span class="nf-product-price"><%= nfi18n.currencySymbol %><%= product_price %></span>
+    <span class="nf-product-price"><%= currencySymbol() %><%= product_price %></span>
     <%= renderProductQuantity() %>
 </script>
 

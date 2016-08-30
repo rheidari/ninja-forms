@@ -158,7 +158,7 @@ return apply_filters( 'ninja_forms_form_display_settings', array(
      */
 
     'currency' => array(
-        'id'      => 'currency',
+        'name'      => 'currency',
         'type'    => 'select',
         'options' => array_merge( array( array( 'label' => __( 'Plugin Default', 'ninja-forms' ), 'value' => '' ) ), Ninja_Forms::config( 'Currency' ) ),
         'label'   => __( 'Currency', 'ninja-forms' ),
