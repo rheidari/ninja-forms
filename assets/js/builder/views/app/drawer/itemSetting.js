@@ -132,7 +132,7 @@ define( ['views/app/drawer/mergeTagsContent', 'views/app/drawer/settingError'], 
 						var currencySymbol = nfAdmin.currencySymbols[ currency ] || '';
 
 						input.autoNumeric({
-							aSign:  currencySymbol,
+							aSign:  jQuery('<div />').html(currencySymbol).text(),
 							aSep: thousandsSeparator,
 							aDec: decimalPoint
 						});
