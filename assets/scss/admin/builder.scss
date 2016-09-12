@@ -51,10 +51,9 @@ All styles used for displaying table content
 @import "tooltip";
 @import "merge-tags-tooltip";
 @import "editor";
+@import "color-picker";
 
 @import "media-queries";
-
-@import "rtl";
 
 #nf-app-admin-header {
     background: #EBEDEE;
@@ -129,3 +128,5 @@ body.fakescroll-grabbed{
     cursor     : -moz-grabbing;
     cursor     : -webkit-grabbing;
 }
+
+@import "rtl";

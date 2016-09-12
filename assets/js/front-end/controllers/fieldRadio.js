@@ -39,7 +39,6 @@ define([], function() {
 		},
 
 		renderOptions: function() {
-			var that = this;
 			var html = '';
 			if ( '' == this.value ) {
 				var valueFound = true;
@@ -48,17 +47,37 @@ define([], function() {
 			}
 			
 			_.each( this.options, function( option, index ) {
-				if ( option.value == that.value ) {
+				if ( option.value == this.value ) {
 					valueFound = true;
 				}
 
-				option.fieldID = that.id;
-				option.classes = that.classes;
-				option.currentValue = that.value;
+				/*
+                 * TODO: This is a bandaid fix for making sure that each option has a "visible" property.
+                 * This should be moved to creation so that when an option is added, it has a visible property by default.
+                 */
+                if ( 'undefined' == typeof option.visible ) {
+                    option.visible = true;
+                }
+
+                option.selected = false;
+				option.fieldID = this.id;
+				option.classes = this.classes;
+				option.currentValue = this.value;
 				option.index = index;
-				var template = Marionette.TemplateCache.get( '#nf-tmpl-field-listradio-option' );
+
+				/*
+				 * TODO: Is this still needed? Found in a merge conflict.
+				 */
+				if ( this.clean && 1 == this.selected ) {
+					option.selected = true;
+				} else if ( this.value == option.value ) {
+					option.selected = true;
+				}
+
+				var template = nfRadio.channel( 'app' ).request( 'get:template',  '#tmpl-nf-field-listradio-option' );
+
 				html += template( option );
-			} );
+			}, this );
 
 			if ( 1 == this.show_other ) {
 				if ( 'nf-other' == this.value ) {
@@ -71,7 +90,7 @@ define([], function() {
 					renderOtherText: this.renderOtherText,
 					valueFound: valueFound
 				};
-				var template = Marionette.TemplateCache.get( '#nf-tmpl-field-listradio-other' );
+				var template = nfRadio.channel( 'app' ).request( 'get:template',  '#tmpl-nf-field-listradio-other' );
 				html += template( data );
 			}
 
@@ -88,7 +107,7 @@ define([], function() {
 					classes: this.classes,
 					currentValue: this.currentValue
 				};
-				var template = Marionette.TemplateCache.get( '#nf-tmpl-field-listradio-other-text' );
+				var template = nfRadio.channel( 'app' ).request( 'get:template',  '#tmpl-nf-field-listradio-other-text' );
 				return template( data );
 			}
 		},

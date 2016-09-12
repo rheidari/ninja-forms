@@ -1,7 +1,7 @@
 define( ['views/app/itemControls'], function( itemControlsView ) {
 	var view = Marionette.LayoutView.extend({
 		tagName: 'div',
-		template: '#nf-tmpl-main-content-field',
+		template: '#tmpl-nf-main-content-field',
 		doingShortcut: false,
 
 		regions: {
@@ -85,7 +85,9 @@ define( ['views/app/itemControls'], function( itemControlsView ) {
 				this.doingShortcut = false;
 				return false;
 			}
-			if ( ( jQuery( e.target ).parent().hasClass( 'nf-fields-sortable' ) || jQuery( e.target ).parent().hasClass( 'nf-field-wrap' ) ) && ! nfRadio.channel( 'app' ).request( 'is:mobile' ) ) {
+
+			if ( ( jQuery( e.target ).parent().hasClass( 'nf-fields-sortable' ) || jQuery( e.target ).parent().hasClass( 'nf-field-wrap' ) || jQuery( e.target ).hasClass( 'nf-field-wrap' ) ) && ! nfRadio.channel( 'app' ).request( 'is:mobile' ) ) {
+				jQuery( ':focus' ).blur();
 				nfRadio.channel( 'app' ).trigger( 'click:edit', e, this.model );
 			}
 		},

@@ -12,8 +12,8 @@ define(
 		'controllers/confirmField',
 		'controllers/updateFieldModel',
 		'controllers/submitButton',
+		'controllers/submitDebug',
 		'controllers/getFormErrors',
-		'controllers/selectFile',
 		'controllers/validateRequired',
 		'controllers/submitError',
 		'controllers/actionRedirect',
@@ -30,10 +30,11 @@ define(
 		'controllers/fieldTextareaRTE',
 		'controllers/fieldStarRating',
 		'controllers/fieldTerms',
-		'controllers/fieldContentsFilters',
+		'controllers/formContentFilters',
 		'controllers/loadViews',
 		'controllers/formErrors',
-		'controllers/submit'
+		'controllers/submit',
+		'controllers/defaultFilters'
 	],
 	function(
 		FormData,
@@ -48,8 +49,8 @@ define(
 		ConfirmField,
 		UpdateFieldModel,
 		SubmitButton,
+		SubmitDebug,
 		GetFormErrors,
-		SelectFile,
 		ValidateRequired,
 		SubmitError,
 		ActionRedirect,
@@ -66,10 +67,11 @@ define(
 		FieldTextareaRTE,
 		FieldStarRating,
 		FieldTerms,
-		FieldContentsFilters,
+		FormContentFilters,
 		LoadViews,
 		FormErrors,
-		Submit
+		Submit,
+		DefaultFilters
 	) {
 		var controller = Marionette.Object.extend( {
 			initialize: function() {
@@ -97,7 +99,7 @@ define(
 				new FieldTextareaRTE();
 				new FieldStarRating();
 				new FieldTerms();
-				new FieldContentsFilters();
+				new FormContentFilters();
 				/**
 				 * Misc controllers
 				 */
@@ -109,8 +111,8 @@ define(
 				new ConfirmField();
 				new UpdateFieldModel();
 				new SubmitButton();
+				new SubmitDebug();
 				new GetFormErrors();
-				new SelectFile();
 				new ValidateRequired();
 				new SubmitError();
 				new ActionRedirect();
@@ -118,6 +120,8 @@ define(
 				
 				new CoreSubmitResponse();
 				new Calculations();
+
+				new DefaultFilters();
 
 				/**
 				 * Data controllers

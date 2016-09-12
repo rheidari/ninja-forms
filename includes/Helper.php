@@ -180,15 +180,32 @@ final class WPN_Helper
         return $returnString;
     }
 
-    public static function get_query_string( $key )
+    public static function get_query_string( $key, $default = FALSE )
     {
-        if( ! isset( $_GET[ $key ] ) ) return '';
+        if( ! isset( $_GET[ $key ] ) ) return $default;
 
         $value = self::htmlspecialchars( $_GET[ $key ] );
 
         if( is_array( $value ) ) $value = $value[ 0 ];
 
         return $value;
+    }
+
+    public static function sanitize_text_field( $data )
+    {
+        if( is_array( $data ) ){
+            return array_map( array( 'self', 'sanitize_text_field' ), $data );
+        }
+        return sanitize_text_field( $data );
+    }
+
+    public static function get_plugin_version( $plugin )
+    {
+        $plugins = get_plugins();
+
+        if( ! isset( $plugins[ $plugin ] ) ) return false;
+
+        return $plugins[ $plugin ][ 'Version' ];
     }
 
 } // End Class WPN_Helper

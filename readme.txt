@@ -2,8 +2,8 @@
 Contributors: wpninjasllc, kstover, jameslaws, wpnzach, kbjohnson90, aman086, daveshine, mordauk, bftrick, helgatheviking
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 4.3
-Tested up to: 4.5.2
-Stable tag: 2.9.46
+Tested up to: 4.6
+Stable tag: 3.0.2
 License: GPLv2 or later
 
 Create forms and manage submissions easily with a simple drag and drop interface. Contact forms, subscription forms, or any other form for WordPress.
@@ -97,18 +97,173 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.9.46 (31 May 2016) =
-
-*Changes:*
-
-* Updating opinionated styling choices.
+= 3.0.2 (7 September 2016) =
 
 *Bugs:*
 
-* Fixed a bug that could cause the input limit to crash submission.
-* Fixed a bug with 3.0 that could cause conversion issues.
+* Fixed a bug that caused PHP notices to be displayed.
 
 == Changelog ==
+
+= 3.0.2 (7 September 2016) =
+
+*Bugs:*
+
+* Fixed a bug that caused PHP notices to be displayed.
+
+= 3.0.1 (7 September 2016) =
+
+*Changes:*
+
+* Add a deprecated notice for ninja_forms_get_all_forms function.
+
+*Bugs:*
+
+* Fixed a bug with templates.
+* Fixed a bug with required field markings.
+
+= 3.0 (6 September 2016) =
+
+*Changes:*
+
+* Release of Ninja Forms THREE
+
+= 2.9.58 (30 August 2016) =
+
+*Bugs:*
+
+* [THREE Only] Fixed a bug with the add field event in the builder.
+* [THREE Only] Fixed a bug with adding credit card fields in the builder.
+
+= 2.9.57 (30 August 2016) =
+
+*Changes:*
+
+* [THREE Only] Removed the "disable input" setting from non-input field types (ie product, shipping, and total).
+* [THREE Only] Added missing "download all submissions" button.
+* [THREE Only] Concatenate and minify JavaScript files by feature dependencies.
+
+*Bugs:*
+
+* Fixed a bug with a PHP notice when sanitizing the textarea field.
+* [THREE Only] Fixed a bug with plain text email containing raw HTML.
+
+= 2.9.56.2 (17 August 2016) =
+
+*Changes:*
+
+* Updated add-on list for THREE compatibility checks.
+
+*Bugs:*
+
+* Fixed a bug with admin styling after WordPress update.
+
+= 2.9.56.1 (17 August 2016) =
+
+*Bugs:*
+
+* Add missing JS api method for addon compatibility.
+
+= 2.9.56 (16 August 2016) =
+
+*Changes:*
+
+* Add a filter for the forms list table.
+* Wrap the Mask JS library is a document ready call.
+* Removed an unnecessary transient.
+* Updated conversion to THREE for new credit card fields.
+* Update the country field to use a shared list of country options.
+* Internationalize templates and messages in JavaScript for THREE.
+* Change the THREE filed drawer to default to click-to-add.
+* Hide the form display when 're-starting' a form submission after redirect.
+
+*Bugs:*
+
+* Fixed some CSS issues with error messages and checkboxes.
+* Fixed a bug with downloading submissions.
+* Fixed a bug with importing forms and associated field IDs.
+* Fixed a bug with textarea encoding in submissions. [credit clifgriffin]
+* Fixed a bug with un-serializing form data on install. [credit todeveni]
+
+= 2.9.55.2 (11 August 2016) =
+
+*Bugs:*
+
+* Fixed a bug with unprepared raw SQL.
+
+= 2.9.55.1 (02 August 2016) =
+
+*Bugs:*
+
+* Fixed a bug with unprepared raw SQL.
+
+= 2.9.55 (02 August 2016) =
+
+*Changes:*
+
+* Remove Freemius integration.
+* Update when capability filters trigger.
+
+*Bugs:*
+
+* Fixed a bug with required list fields.
+* Fixed a bug with an undefined variable.
+
+= 2.9.54 (27 July 2016) =
+
+*Bugs:*
+
+* Fixed a bug with a broken php tag.
+
+= 2.9.53 (26 July 2016) =
+
+*Bugs:*
+
+* Fixed a bug with decimal points with localized languages.
+
+= 2.9.52 (18 July 2016) =
+
+*Security:*
+
+* Fixed a security vulnerability that could allow Cross-Site scripting if the attacker was logged-in as an admin. (reported by Sumofpwn.nl)
+
+*Bugs:*
+
+* Fixed a bug that caused the Ninja Forms cookie to be set on every page load rather than when a form was submitted.
+
+= 2.9.51 (30 June 2016) =
+
+*Bugs:*
+
+* Our tweak to allow more users to try out the 3.0 beta opened up the pool a little wider than we'd intended. Reigning that in a bit.
+* Fixed a bug with description position that could cause the description to fail to open.
+
+= 2.9.50 (21 June 2016) =
+
+*Changes:*
+
+* Opening the ability to upgrade to 3.0 to more users.
+
+= 2.9.49 (20 June 2016) =
+
+*Changes:*
+
+* Updating compatibility for Three add-ons.
+
+= 2.9.48 (13 June 2016) =
+
+*Bugs:*
+
+* Sites that also use WooCommerce should no longer see issues with non-logged in users being unable to submit forms.
+* Fixed a bug with 3.0 Beta that could cause submission saving to fail.
+* Fixed a timezone issue with the system status page.
+* Fixed a bug that could cause translations to fail in some circumstances.
+
+= 2.9.47 (1 June 2016) =
+
+*Bugs:*
+
+* Fixed a bug that could cause forms to disappear on some installations.
 
 = 2.9.46 (31 May 2016) =
 
